@@ -43,7 +43,7 @@ use following commands:
 $ cat <sys interface name> 
 $ echo <physical interface/port number> > <sys interface name>
 ```
-and also have 5 proc interface:
+and also 5 proc interface:
 * <b>protocol_stat</b>: show the statistics of protocols of packets come to the device.
 * <b>srcAddr_stat</b>: list Top 10 IP addresses that send most packets to the device.
 * <b>dstPort_stat</b>: list Top 10 Port addresses that receive most packets.
