@@ -14,12 +14,15 @@ $ sudo apt-get install ukuu
 ```
 and also make sure your device is connected to the Internet.
 ## Installing 
-to installing module you should Run GNU make in the source code directory.  
+to install module you should Run GNU make in the source code directory.  
 ```
 $ make
 ```
-I used loop device to make a file(e.g. image.img) accessible as a block device.to create a file for this purpose use following
-command:
+and then install the module:
+```
+$ insmod advanced_sniffer.ko
+```
+I've used loop device to make a file(e.g. image.img) accessible as a block device.to create a file for this purpose use following command:
 ```
 dd if=/dev/zero of=./image.img bs=1024 count=100000
 ```
@@ -45,5 +48,28 @@ and also have 5 proc interface:
 * <b>srcAddr_stat</b>: list Top 10 IP addresses that send most packets to the device.
 * <b>dstPort_stat</b>: list Top 10 Port addresses that receive most packets.
 * <b>time_stat</b>: show time statitics of Kernel packet processing.
-* <b>sniff_log</b>: show a log of sniffed packets in a human readable format.
+* <b>sniff_log</b>: show a log of sniffed packets in a human readable format.  
+and I've implemented an IOCTL interface to push some commands like Reset proc files form user spcace, to use this 
+interface you should compile <b>userspace.c</b> and execute corresponding object file.  
+## Removing
+to remove the module you should first umount the file system, for this purpose use following command:
+```
+$ umount ./temp
+```
+and then you can safely remove the module:
+```
+$ rmmod advanced_sniffer
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
